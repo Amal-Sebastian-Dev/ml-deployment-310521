@@ -21,6 +21,11 @@ st.table(edu_data)
 avg_epe = df.EPE.mean()
 st.text('Average enrollment in primary education {}'.format(avg_epe))
 
+# Best countries to live in
+st.header('Best Countries to live in based on GDP and UNEMP')
+best_countries = df.loc[(df.UNEMP < df.UNEMP.mean()) & (df.GDP > df.GDP.mean())].tail().sort_values('UNEMP')
+st.table(best_countries)
+
 # Minimum UNEMP
 min_unemployment = df.min()
 st.text('{} has minimum unemployment.({})'.format(min_unemployment['Country Name'], min_unemployment.UNEMP))
